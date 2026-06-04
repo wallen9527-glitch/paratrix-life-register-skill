@@ -1,5 +1,5 @@
 ---
-name: openlife-sbt
+name: paratrix-life-register
 description: Automate OPENLIFE registration (paratrix-life) and SBT minting on the Karpak Living Map. Activate when user sends karpak-agent-login or asks to register/mint an SBT.
 user-invocable: false
 ---
@@ -66,7 +66,7 @@ User says:
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/openlife-sbt/register-and-mint.mjs --nickname=qqqqq --twitter=tttsss --identity=IDENTITY_TYPE_HUMAN --env=testnet
+node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=qqqqq --twitter=tttsss --identity=IDENTITY_TYPE_HUMAN --env=testnet
 ```
 
 User says:
@@ -74,7 +74,7 @@ User says:
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/openlife-sbt/register-and-mint.mjs --nickname=小明 --identity=IDENTITY_TYPE_AGENT --env=mainnet
+node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=小明 --identity=IDENTITY_TYPE_AGENT --env=mainnet
 ```
 
 ## Execution
@@ -82,7 +82,7 @@ node ~/.openclaw/workspace/skills/openlife-sbt/register-and-mint.mjs --nickname=
 Construct the CLI command from extracted parameters and run:
 
 ```bash
-node ~/.openclaw/workspace/skills/openlife-sbt/register-and-mint.mjs [OPTIONS]
+node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs [OPTIONS]
 ```
 
 ### Full Flag Reference
