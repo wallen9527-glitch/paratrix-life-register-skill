@@ -1,6 +1,6 @@
 ---
 name: paratrix-life-register
-description: Automate Paratrix Life registration and SBT minting on the Karpak Living Map. Activate when user sends karpak-agent-login or asks to register/mint an SBT.
+description: Automate Paratrix Life registration and SBT minting on the Karpak Living Map. Activate when user asks to register/mint an SBT.
 user-invocable: false
 ---
 
@@ -12,7 +12,6 @@ Zero external dependencies — uses Node.js built-in modules + browser bridge fo
 ## Trigger
 
 Activate when the user's message contains any of:
-- `karpak-agent-login`
 - `PARATRIX-LIFE`
 - `paratrix-life`
 - Explicit request to register on the Living Map or mint an SBT
@@ -45,10 +44,10 @@ Extract them from natural language and map to CLI flags:
 
 | User may say | Extract to CLI flag | Example extraction |
 |---|---|---|
-| `Nickname: qqqqq` or `name is qqqqq` or `昵称 qqqqq` | `--nickname=qqqqq` | Any string after "nickname/name/昵称" |
-| `Twitter: @abc` or `twitter abc` or `推特 abc` | `--twitter=abc` | Strip leading `@` if present |
+| `Nickname: qqqqq` or `name is qqqqq` | `--nickname=qqqqq` | Any string after "nickname/name" |
+| `Twitter: @abc` or `twitter abc` | `--twitter=abc` | Strip leading `@` if present |
 | `Identity: HUMAN` or `type is AGENT` | `--identity=IDENTITY_TYPE_HUMAN` | Prefix with `IDENTITY_TYPE_`, uppercase |
-| `Environment: testnet` or `env is mainnet` or `环境 testnet` | `--env=testnet` | `testnet` or `mainnet` |
+| `Environment: testnet` or `env is mainnet` | `--env=testnet` | `testnet` or `mainnet` |
 | `Wallet: 0xABC...` or `address 0xABC...` | `--wallet=0xABC...` | Must start with `0x` |
 
 **If the user provides a parameter, you MUST pass it. Never silently drop user-provided values.**
@@ -58,23 +57,48 @@ If a parameter is NOT provided by the user, omit the flag entirely — the scrip
 ### Extraction Examples
 
 User says:
-> karpak-agent-login
-> Nickname: qqqqq
-> Twitter handle (no @): tttsss
-> Identity type: HUMAN
+> paratrix-life-register
+>
+> Please register my wallet on Paratrix Life and mint the Soulbound Token.
+>
+> Registration details:
+>
+> Nickname: test
+> Twitter handle (no @): abc
+> Identity type: AI Agent
 > Environment: testnet
+>
+> Run the register-and-mint script with these parameters. Open browser bridge when wallet interaction is needed. Report the final result when done.
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=qqqqq --twitter=tttsss --identity=IDENTITY_TYPE_HUMAN --env=testnet
+node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=test --twitter=abc --identity=IDENTITY_TYPE_AGENT --env=testnet
 ```
 
 User says:
-> 帮我注册 paratrix-life，昵称小明，身份是 AGENT，用主网
+> paratrix-life-register
+>
+> Please register my wallet on Paratrix Life and mint the Soulbound Token.
+>
+> Registration details:
+>
+> Nickname: test
+> Twitter handle (no @): abc
+> Identity type: AI Agent
+>
+> Run the register-and-mint script with these parameters. Open browser bridge when wallet interaction is needed. Report the final result when done.
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=小明 --identity=IDENTITY_TYPE_AGENT --env=mainnet
+node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=test --twitter=abc --identity=IDENTITY_TYPE_AGENT --env=mainnet
+```
+
+User says:
+> paratrix-life-register, nickname: alice, identity: HUMAN, env: mainnet
+
+You run:
+```bash
+node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=alice --identity=IDENTITY_TYPE_HUMAN --env=mainnet
 ```
 
 ## Execution
