@@ -1,10 +1,10 @@
 ---
 name: paratrix-life-register
-description: Automate OPENLIFE registration (paratrix-life) and SBT minting on the Karpak Living Map. Activate when user sends karpak-agent-login or asks to register/mint an SBT.
+description: Automate Paratrix Life registration and SBT minting on the Karpak Living Map. Activate when user sends karpak-agent-login or asks to register/mint an SBT.
 user-invocable: false
 ---
 
-# OPENLIFE SBT — Registration + Mint Skill
+# Paratrix Life — Registration + Mint Skill
 
 Automate the full flow: **wallet connect → paratrix-life registration → SBT mint**.
 Zero external dependencies — uses Node.js built-in modules + browser bridge for wallet interactions.
@@ -13,8 +13,8 @@ Zero external dependencies — uses Node.js built-in modules + browser bridge fo
 
 Activate when the user's message contains any of:
 - `karpak-agent-login`
-- `OPENLIFE`
-- `openlife`
+- `PARATRIX-LIFE`
+- `paratrix-life`
 - Explicit request to register on the Living Map or mint an SBT
 
 ## How It Works
@@ -70,7 +70,7 @@ node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs -
 ```
 
 User says:
-> 帮我注册 openlife，昵称小明，身份是 AGENT，用主网
+> 帮我注册 paratrix-life，昵称小明，身份是 AGENT，用主网
 
 You run:
 ```bash

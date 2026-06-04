@@ -1,4 +1,4 @@
-# OPENLIFE SBT
+# Paratrix Life Register
 
 Automate the full flow: **wallet connect → paratrix-life registration → SBT mint** on the Karpak Living Map.
 

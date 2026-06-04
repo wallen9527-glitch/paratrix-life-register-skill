@@ -77,8 +77,8 @@ function encodeMintCall(signatureHex) {
   return '0x' + Buffer.concat([selector, offsetBuf, lenBuf, dataBuf]).toString('hex');
 }
 
-function genNickname() { return 'openclaw_' + randomBytes(4).toString('hex'); }
-function genTwitter()  { return 'openlife_agent_' + randomBytes(4).toString('hex'); }
+function genNickname() { return 'paratrix_agent_' + randomBytes(4).toString('hex'); }
+function genTwitter()  { return 'paratrix_agent_' + randomBytes(4).toString('hex'); }
 function log(emoji, msg) { console.log(`${emoji} ${msg}`); }
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
