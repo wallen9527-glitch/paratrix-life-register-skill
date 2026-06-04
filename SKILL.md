@@ -1,7 +1,18 @@
 ---
 name: paratrix-life-register
 description: Automate Paratrix Life registration and SBT minting on the Karpak Living Map. Activate when user asks to register/mint an SBT.
+version: 1.0.4
+platforms: [macos, linux]
 user-invocable: false
+metadata:
+  openclaw:
+    os: ["darwin", "linux"]
+    requires:
+      bins: ["node"]
+  hermes:
+    tags: [web3, blockchain, sbt, registration]
+    category: blockchain
+    requires_toolsets: [terminal]
 ---
 
 # Paratrix Life — Registration + Mint Skill
@@ -72,7 +83,7 @@ User says:
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=test --twitter=abc --identity=IDENTITY_TYPE_AGENT --env=testnet
+node {{SKILL_DIR}}/register-and-mint.mjs --nickname=test --twitter=abc --identity=IDENTITY_TYPE_AGENT --env=testnet
 ```
 
 User says:
@@ -90,7 +101,7 @@ User says:
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=test --twitter=abc --identity=IDENTITY_TYPE_AGENT --env=mainnet
+node {{SKILL_DIR}}/register-and-mint.mjs --nickname=test --twitter=abc --identity=IDENTITY_TYPE_AGENT --env=mainnet
 ```
 
 User says:
@@ -98,7 +109,7 @@ User says:
 
 You run:
 ```bash
-node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs --nickname=alice --identity=IDENTITY_TYPE_HUMAN --env=mainnet
+node {{SKILL_DIR}}/register-and-mint.mjs --nickname=alice --identity=IDENTITY_TYPE_HUMAN --env=mainnet
 ```
 
 ## Execution
@@ -106,8 +117,14 @@ node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs -
 Construct the CLI command from extracted parameters and run:
 
 ```bash
-node ~/.openclaw/workspace/skills/paratrix-life-register/register-and-mint.mjs [OPTIONS]
+node {{SKILL_DIR}}/register-and-mint.mjs [OPTIONS]
 ```
+
+> **Path Resolution:** `{{SKILL_DIR}}` resolves to the skill's installed directory:
+> - OpenClaw: `~/.openclaw/workspace/skills/paratrix-life-register`
+> - Hermes: `~/.hermes/skills/paratrix-life-register`
+>
+> If `{{SKILL_DIR}}` is not supported, use the appropriate path above for your platform.
 
 ### Full Flag Reference
 
